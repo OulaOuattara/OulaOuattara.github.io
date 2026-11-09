@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio technique – Ingénieur DevOps et développeur back-end"
+    />
+    <title>Portfolio DevOps OUATTARA Oula Emmanuel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      /* Layout: colonne de lecture unique ; bandeau d'identité, pipeline CI/CD en frise, projets en fiches avec capture à gauche */
+      :root {
+        --bg: #f6f8fb;
+        --surface: #ffffff;
+        --ink: #16233b;
+        --muted: #56637a;
+        --line: #dce3ee;
+        --navy: #1f3864;
+        --accent: #2e75b6;
+        --accent-soft: #e6eff9;
+        --ok: #1e8a4c;
+        --ok-soft: #e3f4ea;
+        --code-bg: #0f1b30;
+        --code-fg: #d6e2f5;
+        --f-display:
+          "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+        --f-body: "IBM Plex Sans", "Segoe UI", Calibri, Arial, sans-serif;
+        --f-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0d1626;
+          --surface: #142038;
+          --ink: #e4eaf4;
+          --muted: #9aa8bf;
+          --line: #26344f;
+          --navy: #a9c4ea;
+          --accent: #6ea8e0;
+          --accent-soft: #1a2d4a;
+          --ok: #5cc88a;
+          --ok-soft: #173627;
+          --code-bg: #08101e;
+          --code-fg: #d6e2f5;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0d1626;
+        --surface: #142038;
+        --ink: #e4eaf4;
+        --muted: #9aa8bf;
+        --line: #26344f;
+        --navy: #a9c4ea;
+        --accent: #6ea8e0;
+        --accent-soft: #1a2d4a;
+        --ok: #5cc88a;
+        --ok-soft: #173627;
+        --code-bg: #08101e;
+        --code-fg: #d6e2f5;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      img {
+        max-width: 100%;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--f-body);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--f-display);
+        color: var(--navy);
+        line-height: 1.15;
+        text-wrap: balance;
+        margin: 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      /* En-tête */
+      header.hero {
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      header.hero .wrap {
+        padding-block: 56px 40px;
+        display: grid;
+        gap: 20px;
+      }
+      .eyebrow {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--accent);
+        letter-spacing: 0.04em;
+      }
+      h1 {
+        font-size: clamp(36px, 6vw, 56px);
+        letter-spacing: 0.01em;
+      }
+      .role {
+        font-family: var(--f-display);
+        font-size: clamp(20px, 3vw, 26px);
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .intro {
+        max-width: 64ch;
+        color: var(--ink);
+        margin: 0;
+      }
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 22px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+      .contact span {
+        display: inline-flex;
+        gap: 6px;
+        align-items: baseline;
+      }
+      .contact b {
+        font-weight: 600;
+        color: var(--ink);
+        font-family: var(--f-mono);
+        font-size: 13px;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .fact {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .fact strong {
+        color: var(--navy);
+        font-family: var(--f-display);
+        font-size: 17px;
+        margin-right: 4px;
+      }
+
+      section {
+        padding-block: 48px 8px;
+      }
+      .sec-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 8px;
+      }
+      h2 {
+        font-size: 26px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .sec-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* Pipeline */
+      .pipeline {
+        background: var(--code-bg);
+        color: var(--code-fg);
+        border-radius: 10px;
+        padding: 22px;
+        overflow-x: auto;
+      }
+      .run-title {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: #8fa6c8;
+        margin-bottom: 16px;
+      }
+      .run-title b {
+        color: var(--code-fg);
+        font-weight: 500;
+      }
+      .stages {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        min-width: 760px;
+      }
+      .stage {
+        flex: 1;
+        display: grid;
+        gap: 6px;
+        padding: 12px 14px;
+        border: 1px solid #2a3b5c;
+        border-radius: 8px;
+        background: #13223d;
+      }
+      .stage .st {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: #5cc88a;
+      }
+      .stage .nm {
+        font-family: var(--f-display);
+        font-size: 17px;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .stage .ds {
+        font-size: 13px;
+        color: #a9b8d2;
+        line-height: 1.4;
+      }
+      .stage.manual .st {
+        color: #e0b65c;
+      }
+      .arrow {
+        align-self: center;
+        width: 26px;
+        height: 2px;
+        background: #3c5580;
+        position: relative;
+        flex: none;
+      }
+      .arrow::after {
+        content: "";
+        position: absolute;
+        right: -1px;
+        top: -4px;
+        border-left: 7px solid #3c5580;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+      }
+      .pipe-note {
+        margin: 14px 0 0;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* Projets */
+      .projects {
+        display: grid;
+        gap: 28px;
+      }
+      .project {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        overflow: hidden;
+      }
+      .shot {
+        background: var(--accent-soft);
+        border-right: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .chrome {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        padding: 9px 12px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .chrome i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--line);
+        display: block;
+      }
+      .chrome span {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--muted);
+        margin-left: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .shot-body {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        min-height: 230px;
+        padding: 18px;
+      }
+      .shot-body img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(15, 27, 48, 0.18);
+      }
+      .shot-body.phone img {
+        width: auto;
+        max-width: 100%;
+        max-height: 420px;
+        border-radius: 10px;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 7px 14px;
+        border-radius: 6px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+      }
+      .btn:hover {
+        background: var(--accent-soft);
+      }
+      .mock {
+        width: 100%;
+        max-width: 360px;
+        display: grid;
+        gap: 10px;
+      }
+      .mock .bar {
+        height: 12px;
+        border-radius: 3px;
+        background: var(--line);
+      }
+      .mock .bar.w60 {
+        width: 60%;
+        background: var(--accent);
+        opacity: 0.55;
+      }
+      .mock .bar.w80 {
+        width: 80%;
+      }
+      .mock .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .mock .tile {
+        height: 54px;
+        border-radius: 4px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+      .mock .lbl {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .info {
+        padding: 22px 24px;
+        display: grid;
+        gap: 12px;
+        align-content: start;
+        min-width: 0;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .status {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: var(--ok-soft);
+        color: var(--ok);
+      }
+      .status.test {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      .ctx {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      h3 {
+        font-size: 23px;
+      }
+      .info p {
+        margin: 0;
+      }
+      .info ul {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 4px;
+        font-size: 15px;
+      }
+      .info li::marker {
+        color: var(--accent);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .chip {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: var(--bg);
+      }
+      .role-line {
+        font-size: 14px;
+      }
+      .role-line b {
+        color: var(--navy);
+      }
+
+      /* Compétences */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+      .skill {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px 18px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+      .skill h4 {
+        margin: 0;
+        font-family: var(--f-display);
+        font-size: 17px;
+        color: var(--navy);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .skill.learn {
+        border-style: dashed;
+      }
+
+      /* Parcours */
+      .timeline {
+        display: grid;
+        gap: 0;
+      }
+      .tl {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 18px;
+        padding-block: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .tl:last-child {
+        border-bottom: 0;
+      }
+      .tl .when {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--accent);
+        padding-top: 3px;
+        font-variant-numeric: tabular-nums;
+      }
+      .tl .what b {
+        color: var(--navy);
+      }
+      .tl .what span {
+        display: block;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      footer {
+        margin-top: 48px;
+        border-top: 1px solid var(--line);
+        background: var(--surface);
+      }
+      footer .wrap {
+        padding-block: 28px 36px;
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      footer strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 760px) {
+        .project {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .shot {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .tl {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2px;
+        }
+        header.hero .wrap {
+          padding-block: 36px 28px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <div class="eyebrow">
+          Portfolio technique · Ouagadougou, Burkina Faso
+        </div>
+        <div>
+          <h1>OUATTARA Oula Emmanuel</h1>
+          <div class="role">Ingénieur DevOps · Développeur Back-end</div>
+        </div>
+        <p class="intro">
+          Responsable des systèmes d’information à la Brigade Centrale de Lutte
+          contre la Cybercriminalité (BCLCC) depuis 2022. Je conçois des API
+          REST en Python (FastAPI) et PHP (Laravel), j’automatise leur livraison
+          avec GitHub Actions et Docker, et j’administre les serveurs Linux qui
+          les hébergent.
+        </p>
+        <div class="facts">
+          <div class="fact"><strong>4 ans</strong>d’expérience</div>
+          <div class="fact"><strong>2</strong>projets en ligne</div>
+          <div class="fact"><strong>CI/CD</strong>GitHub Actions</div>
+        </div>
+        <div class="contact">
+          <span><b>email</b>oulaemmanuelouattara2@gmail.com</span>
+          <span><b>tél</b>+226 64 77 39 64</span>
+          <span
+            ><b>github</b
+            ><a
+              href="https://github.com/OulaOuattara"
+              target="_blank"
+              rel="noopener"
+              >github.com/OulaOuattara</a
+            ></span
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Ma chaîne de livraison</h2>
+            <p>Le pipeline GitHub Actions utilisé sur mes projets</p>
+          </div>
+          <div
+            class="pipeline"
+            role="img"
+            aria-label="Pipeline : push sur GitHub, tests, build de l'image Docker, scan de sécurité, publication sur Docker Hub, déploiement avec Docker Compose sur un VPS Ubuntu derrière Nginx"
+          >
+            <div class="run-title">
+              workflow <b>ci.yml</b> · déclenché sur <b>push</b> /
+              <b>pull_request</b>
+            </div>
+            <div class="stages">
+              <div class="stage">
+                <span class="st">✓ git push</span><span class="nm">Commit</span
+                ><span class="ds"
+                  >Branche de fonctionnalité, revue par pull request</span
+                >
+              </div>
+              <div class="arrow"></div>
+              <div class="stage">
+                <span class="st">✓ job: test</span><span class="nm">Tests</span
+                ><span class="ds">Tests automatisés à chaque push</span>
+              </div>
+              <div class="arrow"></div>
+              <div class="stage">
+                <span class="st">✓ job: build</span><span class="nm">Build</span
+                ><span class="ds"
+                  >Image Docker construite depuis le Dockerfile</span
+                >
+              </div>
+              <div class="arrow"></div>
+              <div class="stage">
+                <span class="st">✓ job: scan</span
+                ><span class="nm">Scan sécurité</span
+                ><span class="ds">Analyse des vulnérabilités de l’image</span>
+              </div>
+              <div class="arrow"></div>
+              <div class="stage">
+                <span class="st">✓ job: push</span
+                ><span class="nm">Docker Hub</span
+                ><span class="ds">Publication de l’image versionnée</span>
+              </div>
+              <div class="arrow"></div>
+              <div class="stage manual">
+                <span class="st">→ docker compose</span
+                ><span class="nm">Déploiement</span
+                ><span class="ds"
+                  >VPS Ubuntu, Nginx, sauvegardes chiffrées</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="pipe-note">
+            Les quatre étapes centrales sont automatisées dans GitHub Actions.
+            Le déploiement se fait aujourd’hui avec Docker Compose sur le
+            serveur. L’automatiser de bout en bout est ma prochaine étape.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Projets</h2>
+            <p>Conception, développement et mise en production</p>
+          </div>
+          <div class="projects">
+            <article class="project" id="alerte-laabal">
+              <div class="shot">
+                <div class="chrome">
+                  <i></i><i></i><i></i><span>Alerte Laabal · Google Play</span>
+                </div>
+                <div class="shot-body phone" data-shot="laabal">
+                  <img
+                    src="img/laabal.jpg"
+                    alt="Application mobile Alerte Laabal, alimentée par l'API REST"
+                    width="576"
+                    height="1022"
+                  />
+                </div>
+              </div>
+              <div class="info">
+                <div class="meta">
+                  <span class="status">En production</span
+                  ><span class="ctx">Plateforme web + application mobile</span>
+                </div>
+                <h3>Plateforme Alerte Laabal</h3>
+                <p class="role-line">
+                  <b>Mon rôle :</b> back-end et administration, en binôme avec
+                  un développeur mobile.
+                </p>
+                <ul>
+                  <li>
+                    Conception et développement de l’API REST consommée par
+                    l’application mobile.
+                  </li>
+                  <li>
+                    Développement de l’interface d’administration de la
+                    plateforme.
+                  </li>
+                  <li>
+                    Application mobile publiée sur Google Play, alimentée par
+                    cette API.
+                  </li>
+                </ul>
+                <div class="chips">
+                  <span class="chip">PHP</span><span class="chip">Laravel</span
+                  ><span class="chip">API REST</span>
+                </div>
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://play.google.com/store/apps/details?id=com.laabal.app"
+                    target="_blank"
+                    rel="noopener"
+                    >Voir sur Google Play ↗</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="project" id="scoop-ca-metba">
+              <div class="shot">
+                <div class="chrome">
+                  <i></i><i></i><i></i><span>metbaconnect.bf</span>
+                </div>
+                <div class="shot-body" data-shot="metba">
+                  <img
+                    src="img/metba.jpg"
+                    alt="Page d'accueil du site METBA Connect de la SCOOP-CA METBA Burkina"
+                    width="1200"
+                    height="633"
+                  />
+                </div>
+              </div>
+              <div class="info">
+                <div class="meta">
+                  <span class="status">En ligne</span
+                  ><span class="ctx">Coopérative agricole</span>
+                </div>
+                <h3>Refonte du site de la SCOOP-CA METBA Burkina</h3>
+                <p class="role-line">
+                  <b>Mon rôle :</b> refonte complète et mise en ligne.
+                </p>
+                <ul>
+                  <li>
+                    Refonte du site de la coopérative et de sa présentation.
+                  </li>
+                  <li>Déploiement conteneurisé avec Docker.</li>
+                  <li>
+                    Pipeline CI/CD GitHub Actions : tests, build, scan de
+                    l’image, publication sur Docker Hub.
+                  </li>
+                </ul>
+                <div class="chips">
+                  <span class="chip">Docker</span
+                  ><span class="chip">GitHub Actions</span
+                  ><span class="chip">Docker Hub</span>
+                </div>
+                <div class="links">
+                  <a
+                    class="btn"
+                    href="https://metbaconnect.bf/"
+                    target="_blank"
+                    rel="noopener"
+                    >Voir le site ↗</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Compétences</h2>
+            <p>Outils utilisés en production</p>
+          </div>
+          <div class="skills">
+            <div class="skill">
+              <h4>Back-end &amp; API</h4>
+              <div class="chips">
+                <span class="chip">Python · FastAPI</span
+                ><span class="chip">PHP · Laravel</span
+                ><span class="chip">Node.js</span
+                ><span class="chip">TypeScript</span
+                ><span class="chip">API REST</span>
+              </div>
+            </div>
+            <div class="skill">
+              <h4>DevOps &amp; CI/CD</h4>
+              <div class="chips">
+                <span class="chip">Git · GitHub</span
+                ><span class="chip">GitHub Actions</span
+                ><span class="chip">Docker</span
+                ><span class="chip">Docker Compose</span
+                ><span class="chip">Docker Hub</span>
+              </div>
+            </div>
+            <div class="skill">
+              <h4>Systèmes &amp; données</h4>
+              <div class="chips">
+                <span class="chip">Ubuntu Server</span
+                ><span class="chip">VPS</span><span class="chip">Nginx</span
+                ><span class="chip">PostgreSQL</span
+                ><span class="chip">MySQL / MariaDB</span
+                ><span class="chip">Sauvegardes chiffrées</span>
+              </div>
+            </div>
+            <div class="skill">
+              <h4>Sécurité</h4>
+              <div class="chips">
+                <span class="chip">DevSecOps</span
+                ><span class="chip">Scan d’images</span
+                ><span class="chip">Sécurité des systèmes</span
+                ><span class="chip">Réseaux · VLAN</span>
+              </div>
+            </div>
+            <div class="skill">
+              <h4>Front-end</h4>
+              <div class="chips">
+                <span class="chip">React</span
+                ><span class="chip">TypeScript</span
+                ><span class="chip">Tailwind CSS</span
+                ><span class="chip">Bootstrap</span>
+              </div>
+            </div>
+            <div class="skill learn">
+              <h4>En apprentissage</h4>
+              <div class="chips">
+                <span class="chip">Kubernetes</span
+                ><span class="chip">Prometheus</span
+                ><span class="chip">Grafana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Parcours</h2>
+          </div>
+          <div class="timeline">
+            <div class="tl">
+              <div class="when">2022 – aujourd’hui</div>
+              <div class="what">
+                <b>Responsable des Systèmes d’Information</b
+                ><span
+                  >Brigade Centrale de Lutte contre la Cybercriminalité (BCLCC),
+                  Ouagadougou</span
+                >
+              </div>
+            </div>
+            <div class="tl">
+              <div class="when">2026</div>
+              <div class="what">
+                <b>Licence 3 en Technologie du Génie Informatique</b
+                ><span
+                  >Université Aube Nouvelle, obtention prévue en décembre
+                  2026</span
+                >
+              </div>
+            </div>
+            <div class="tl">
+              <div class="when">Juillet 2026</div>
+              <div class="what">
+                <b>Formation DevOps et DevSecOps</b
+                ><span>KOAMA Technologies</span>
+              </div>
+            </div>
+            <div class="tl">
+              <div class="when">2018</div>
+              <div class="what">
+                <b
+                  >Licence professionnelle en Électronique et Automatisme
+                  industriels</b
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span
+          ><strong>Code source :</strong> mes dépôts sont privés car ils
+          contiennent des applications d’institutions. Je peux les présenter en
+          démonstration lors d’un entretien.</span
+        >
+        <span
+          >oulaemmanuelouattara2@gmail.com · +226 64 77 39 64 / +226 71 70 18
+          91</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>
