@@ -1,8 +1,8 @@
-# Portfolio – Nom Prénom
+# Portfolio – OUATTARA Oula Emmanuel
 
 Ingénieur DevOps · Développeur Back-end · Ouagadougou, Burkina Faso
 
-**Voir le portfolio en ligne :** https://profil.github.io
+**Voir le portfolio en ligne :** https://OulaOuattara.github.io
 
 ## Projets présentés
 
@@ -13,4 +13,4 @@ Ingénieur DevOps · Développeur Back-end · Ouagadougou, Burkina Faso
 
 Python (FastAPI) · PHP (Laravel) · Node.js · TypeScript · API REST · Git/GitHub · GitHub Actions · Docker · Docker Compose · Ubuntu Server · Nginx · PostgreSQL · MySQL/MariaDB
 
-Contact : nom.prenom@gmail.com
+Contact : oulaemmanuelouattara2@gmail.com

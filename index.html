@@ -7,7 +7,7 @@
       name="description"
       content="Portfolio technique – Ingénieur DevOps et développeur back-end"
     />
-    <title>Portfolio DevOps Nom Prénom</title>
+    <title>Portfolio DevOps OUATTARA Oula Emmanuel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="stylesheet"
@@ -555,42 +555,97 @@
           scroll-behavior: auto !important;
         }
       }
+
+      /* Photo de profil */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-text {
+        display: grid;
+        gap: 20px;
+        min-width: 0;
+      }
+      .portrait {
+        margin: 0;
+        width: 240px;
+      }
+      .portrait img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 520 / 598;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        box-shadow: 0 6px 20px rgba(22, 35, 59, 0.12);
+        background: #fff;
+      }
+      @media (max-width: 760px) {
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 24px;
+        }
+        .portrait {
+          order: -1;
+          width: 150px;
+        }
+        .portrait img {
+          border-radius: 50%;
+          aspect-ratio: 1 / 1;
+          object-position: center 20%;
+        }
+      }
     </style>
   </head>
   <body>
     <header class="hero">
       <div class="wrap">
-        <div class="eyebrow">
-          Portfolio technique · Ouagadougou, Burkina Faso
-        </div>
-        <div>
-          <h1>Nom Prénom</h1>
-          <div class="role">Ingénieur DevOps · Développeur Back-end</div>
-        </div>
-        <p class="intro">
-          Responsable des systèmes d’information à la Brigade Centrale de Lutte
-          contre la Cybercriminalité (BCLCC) depuis 2022. Je conçois des API
-          REST en Python (FastAPI) et PHP (Laravel), j’automatise leur livraison
-          avec GitHub Actions et Docker, et j’administre les serveurs Linux qui
-          les hébergent.
-        </p>
-        <div class="facts">
-          <div class="fact"><strong>4 ans</strong>d’expérience</div>
-          <div class="fact"><strong>2</strong>projets en ligne</div>
-          <div class="fact"><strong>CI/CD</strong>GitHub Actions</div>
-        </div>
-        <div class="contact">
-          <span><b>email</b>nom.prenom@gmail.com</span>
-          <span><b>tél</b>+226 64 77 39 64</span>
-          <span
-            ><b>github</b
-            ><a
-              href="Nom Prénomhttps://github.com/profil"
-              target="_blank"
-              rel="noopener"
-              >github.com/profil</a
-            ></span
-          >
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="eyebrow">
+              Portfolio technique · Ouagadougou, Burkina Faso
+            </div>
+            <div>
+              <h1>OUATTARA Oula Emmanuel</h1>
+              <div class="role">Ingénieur DevOps Développeur Back-end</div>
+            </div>
+            <p class="intro">
+              Responsable des systèmes d’information à la Brigade Centrale de
+              Lutte contre la Cybercriminalité (BCLCC) depuis 2022. Je conçois
+              des API REST en Python (FastAPI) et PHP (Laravel), j’automatise
+              leur livraison avec GitHub Actions et Docker, et j’administre les
+              serveurs Linux qui les hébergent.
+            </p>
+            <div class="facts">
+              <div class="fact"><strong>4 ans</strong>d’expérience</div>
+              <div class="fact"><strong>2</strong>projets en ligne</div>
+              <div class="fact"><strong>CI/CD</strong>GitHub Actions</div>
+            </div>
+            <div class="contact">
+              <span><b>email</b>oulaemmanuelouattara2@gmail.com</span>
+              <span><b>tél</b>+226 64 77 39 64</span>
+              <span
+                ><b>github</b
+                ><a
+                  href="OUATTARA Oula Emmanuel https://github.com/OulaOuattara"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/profil</a
+                ></span
+              >
+            </div>
+          </div>
+          <figure class="portrait">
+            <img
+              src="img/portrait.jpg"
+              alt="Photo de profil"
+              width="520"
+              height="598"
+            />
+          </figure>
         </div>
       </div>
     </header>
@@ -895,7 +950,10 @@
           contiennent des applications d’institutions. Je peux les présenter en
           démonstration lors d’un entretien.</span
         >
-        <span>nom.prenom@gmail.com · +226 55 77 33 44 / +226 78 88 99 44</span>
+        <span
+          >oulaemmanuelouattara2@gmail.com · +226 64 77 39 64 / +226 71 70
+          18</span
+        >
       </div>
     </footer>
   </body>
